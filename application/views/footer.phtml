@@ -1,11 +1,9 @@
-<pre>
 <?
 $scriptDuration = microtime(true) - $statistic['php']['start'];
 $phpDuration = $scriptDuration - $statistic['sql']['duration'];
 $phpDurationPercent = ceil($phpDuration/$scriptDuration*100);
 $sqlDurationPercent = floor($statistic['sql']['duration']/$scriptDuration*100);
 ?>
-</pre>
 <div class ="statistic">
 	<span>[ 
 	Time: <?=round($phpDuration, 4);?>s | 

@@ -11,9 +11,7 @@ class Page {
 		$shownEndPages = 4;
 		$pages = ceil($items / $itemOnPage);
 		$curPage = ($curPage > $pages) ? $pages : $curPage;
-		//$nextPage = ($curPage + 1) > $pages ? $curPage : $curPage + 1;
-		//$prevPage = ($curPage - 1) < 1 ? $curPage : $curPage - 1;
-
+		
 		$sqlFrom = ($curPage - 1) * $itemOnPage;
 		if ($curPage < $pages) {
 			$sqlCount = $itemOnPage;
@@ -59,27 +57,17 @@ class Page {
 			}
 		}
 		
-
-		//$paginator['startCol'] = $shownStartPages;
-		//$paginator['endCol'] = $shownEndPages;
 		$paginator['pagesStart'] = $pagesStart;
 		$paginator['pagesEnd'] = $pagesEnd;
-		//$paginator['prevPage'] = $prevPage;
-		//$paginator['nextPage'] = $nextPage;
 		$paginator['cntPages'] = $pages;
-		//$paginator['itemOnPage'] = $itemOnPage;
 		$paginator['items'] = $items;
 		$paginator['curPage'] = $curPage;
 		$paginator['sqlFrom'] = $sqlFrom;
 		$paginator['sqlCount'] = $sqlCount;
-		
 		return $paginator;
 	}
 	public static function getHtmlPages($pages, $href)
 	{
-		//echo '<pre>';
-		//print_r($pages);
-
 		$html = '';
 		if (!$pages) { return $html; }
 		foreach ($pages['pagesStart'] as $page) {

@@ -1,2 +1,0 @@
-DB | DB::__construct | SQLSTATE[42000]: Syntax error or access violation: 1049 Unknown database 'camo_it' |  
-TopicsModel | TopicsModel::getCount | SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected |  

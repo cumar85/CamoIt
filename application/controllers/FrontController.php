@@ -5,7 +5,7 @@ class FrontController
     protected $_action;
     protected $_params = array();
     protected static $_instance;
-		protected $_event;
+	protected $_event;
     public static function getInstance() 
     {
         if(!(self::$_instance instanceof self)) {
@@ -15,7 +15,7 @@ class FrontController
     }
     private function __construct()
     {
-			  $this->_event = Event::getInstance();
+		$this->_event = Event::getInstance();
         $request = $_SERVER['REQUEST_URI'];
         $request = str_replace(PRJ_URL, '', $request);
         $splits = explode('/', trim($request,'/'));
@@ -38,10 +38,8 @@ class FrontController
                 exit();    
             }
             $this->_params = array_combine($keys, $values);
-              
         }
-      
-        if ($_GET) {
+		if ($_GET) {
             $inputsGetArr = filter_input_array(INPUT_GET, 
                     FILTER_SANITIZE_SPECIAL_CHARS);
             $this->_params += $inputsGetArr; 
@@ -60,34 +58,34 @@ class FrontController
      }
      public function route()
      {
-			try {
-        if(class_exists($this->getController())) {
-            $rc = new ReflectionClass($this->getController());
-            if($rc->implementsInterface('IController')) {
-                if($rc->hasMethod($this->getAction())) {
-                    $controller = $rc->newInstance();
-                    $method = $rc->getMethod($this->getAction());
-                    $method->invoke($controller);
-                } else {
-                    header("Location: ".PRJ_URL."/index/error404");
-                    throw new Exception ('Wromng Action '.$this->getAction());
-                    exit();
-                }
-            } else {
-                header("Location: ".PRJ_URL."/index/error404");
-                throw new Exception ('Wromng Interface not a IController');
-                exit();
-            }
-        } else {
-            header("Location: ".PRJ_URL."/index/error404");
-            throw new Exception ('Wromng Controller '.$this->getController());
-            exit();
+		try {
+			if(class_exists($this->getController())) {
+				$rc = new ReflectionClass($this->getController());
+				if($rc->implementsInterface('IController')) {
+					if($rc->hasMethod($this->getAction())) {
+						$controller = $rc->newInstance();
+						$method = $rc->getMethod($this->getAction());
+						$method->invoke($controller);
+					} else {
+						header("Location: ".PRJ_URL."/index/error404");
+						throw new Exception ('Wromng Action '.$this->getAction());
+						exit();
+					}
+				} else {
+					header("Location: ".PRJ_URL."/index/error404");
+					throw new Exception ('Wromng Interface not a IController');
+					exit();
 				}
-			} catch (Exception $e) {
-				file_put_contents('Errors.txt', $e->getMessage()."\n", FILE_APPEND);
-				$this->_event->add('DB','Неправильная ссылка');
-				return $this->_event;
+			} else {
+				header("Location: ".PRJ_URL."/index/error404");
+				throw new Exception ('Wromng Controller '.$this->getController());
+				exit();
 			}
+		} catch (Exception $e) {
+			file_put_contents('Errors.txt', $e->getMessage()."\n", FILE_APPEND);
+			$this->_event->add('DB','Неправильная ссылка');
+			return $this->_event;
+		}
 			
     }
     function getParam($key, $default = NULL)

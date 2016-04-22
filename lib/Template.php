@@ -30,11 +30,3 @@ class Template
     }
 }
     
-    
-    
-    
-    
-    
-
-
-

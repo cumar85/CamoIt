@@ -1,10 +1,7 @@
 <?
 class Date 
 {
-	public function __construct() 
-  {
-  }
-  public static function getFormatedDateTime($timestamp)
+	public static function getFormatedDateTime($timestamp)
 	{
 		if (!isset($timestamp) or $timestamp < 1) {
 			return '';
