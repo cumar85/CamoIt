@@ -7,9 +7,12 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 define('DB_CHARSET', 'utf8');
 
-define('PRJ_PATH', str_replace('\\', '/', realpath(dirname("."))));
+define('PRJ_PATH', str_replace('\\', '/', __DIR__));
 define('CHARSET', 'utf-8');
 define('PRJ_NAME', 'Camo_it');
+
+
+
 
 define('ERROR_FILE', 'Errors.txt');
 
