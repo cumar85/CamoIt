@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	<?=PRJ_NAME?> | <?=$pageName?> </title>
+	<link rel="stylesheet" href="<?=CSS_URL?>/style.css">
+	<script src="<?=JS_URL?>/addmsg.js"></script>
+</head>
+<body>
+
+<? if($errArr): ?>
+<p class='error'>
+	<? foreach($errArr as $k=>$err): ?>
+		<? if ($k == 'query' ): continue; ?> <? endif; ?>
+		<?=$err?>
+
+	<? if ($k == 'NO_DB'): ?>
+		<br><span>Для создания базы данных и 
+		заполнения тестовыми данными 
+		перейдите по ссылке <a href="/createDb/index">создать и заполнить</a> </span>
+	<? endif ?>
+	<? endforeach; ?>
+</p>
+
+<? endif; ?>
+	<div class="container">
+
+	<form class="search" method="post" 
+						action="<?=PRJ_URL?>/messages/search">
+		<span>Поиск:</span>
+		<input type="search" name="query"></input>
+		<button type="submit"> > </button> 
+	</form>
+

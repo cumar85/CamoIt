@@ -1,0 +1,66 @@
+<pre>
+	<? //print_r($messages) ?>
+	<? //print_r($pages) ?>
+</pre>
+	<div class="breadcrumbs">
+		<a href='<?=PRJ_URL?>/index/index'>Список форумов</a>
+			 <span> >> </span> 
+			<?if ($query): ?>
+				<a href='<?=PRJ_URL?>/messages/search/query/<?=$query?>'>
+			<? else: ?>
+				<a href='<?=PRJ_URL?>/messages/search'>
+			<? endif; ?>
+		 	<?=$pageName?>
+		 </a>
+		</div>
+
+		<? if (isset($errArr['query'])): ?>
+			<?=$errArr['query']?>
+		<? else:?>
+			<div class="pagenav">
+				<?
+					if ($pages) {
+						$href = PRJ_URL . "/messages/search/query/$query";
+						Page::getHtmlPages($pages, $href);
+					} else {
+						echo "<span>По вашему запросу ничего не найдено </span>";
+					}
+				?>
+		  </div>  
+		<? endif; ?>
+
+
+		<section class= "messages">
+			<? if ($messages): ?>
+				<? foreach ($messages as $message): ?>
+					<div class ="msg">
+						<div class ="msgtitle">
+							<span>Дата: 
+								<?=Date::getFormatedDateTime($message['timestamp'])?>
+							</span>
+						</div>
+						<div class ="msgtext">
+							<span><?=$message['msg']?></span>
+						</div>
+					</div>
+				<? endforeach; ?> 
+			<? endif; ?>
+		</section>
+		
+		<div class="pagenav">
+			<?
+				if ($pages) {
+					$href = PRJ_URL . "/messages/search/query/$query";
+					Page::getHtmlPages($pages, $href);
+				}
+			?>
+	  </div>  
+		
+		
+
+		
+		
+			
+		
+
+

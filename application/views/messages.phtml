@@ -1,0 +1,75 @@
+<pre>
+	<? //print_r($messages) ?>
+	<? //print_r($pages) ?>
+</pre>
+		<div class="breadcrumbs">
+			<a href='<?=PRJ_URL?>/index/index'>Список форумов</a>
+			 <span> >> </span> 
+			<a href='<?=PRJ_URL?>/messages/getmsgs/topicId/<?=$topicId?>'>
+				<?=$pageName?>
+			</a>
+		</div>
+
+		<div class="title">
+			<span>Тема: <?=$topicName?></span>
+		</div>
+
+		<div class="pagenav">
+			<?
+				if ($pages) {
+				$href = PRJ_URL . "/messages/getmsgs/topicId/$topicId";
+				Page::getHtmlPages($pages, $href);
+			} else {
+				echo "<span>В этой теме еще нет сообщений.<span>";
+			}	
+				
+			?>
+			
+	  </div> 
+
+
+
+		<section id= "messages">
+			<? if ($messages): ?>
+				<? foreach ($messages as $message): ?>
+					<div class ="msg">
+						<div class ="msgtitle">
+							Дата: <span>
+								<?=Date::getFormatedDateTime($message['timestamp'])?>
+							</span>
+						</div>
+						<div class ="msgtext">
+							<span><?=$message['msg']?></span>
+						</div>
+					</div>
+				<? endforeach; ?> 
+			<? endif; ?>
+		</section>
+		
+		<div class="pagenav">
+			<?
+				if ($pages) {
+					$href = PRJ_URL . "/messages/getmsgs/topicId/$topicId";
+					Page::getHtmlPages($pages, $href);
+				}
+			?>
+	  </div>  
+		
+		<? if($pages['cntPages'] == $pages['curPage']): ?>
+			<div id= "isLastPage"></div>
+		<?endif;?> 	
+		<?//=print_r($pages)?>
+		 
+		<div id="ajaxResult"> </div>
+		<form name="addmsg" class="addmsg" method="post" 
+						onsubmit="return false"
+						action="<?=PRJ_URL?>/messages/addmsg/topicId/<?=$topicId?>" >
+
+			<div>Добавить сообщение</div>
+			<div class="text" >
+				<textarea name="textarea" id="" cols="30" rows="10"></textarea>
+			</div>
+			<div class="btn" >
+				<button type="submit"> Отправить</button>
+			</div>
+		</form>

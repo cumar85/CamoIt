@@ -1,0 +1,30 @@
+<? //print_r($pages) ?>
+<? if ($pages): ?>
+		<span>Страницы : </span>
+		<? foreach ($pages['pagesStart'] as $page): ?>
+			<a href="<?=PRJ_URL?>/messages/getmsgs/topic_id/<?=$topic_id?>/page/<?=$page?>">
+
+				<?if($page == $pages['curPage'] and !$mod ): ?>
+					<span class="curent"><?=$page?></span>
+				<?else:?>
+					<span><?=$page?></span>
+				<?endif;?>
+				<?if($page != $pages['cntPages']):?><span>,</span> <?endif;?>
+			</a>
+		<? endforeach; ?>
+		<? if ($pages['pagesEnd']): ?>
+			<? if ( !$mod ): ?>
+				<? $nexnPage  = $pages['nextPage'];?> 
+			<? else: ?>
+			   <? $nexnPage  = 6;?>
+			<? endif?>
+			<a href="<?=PRJ_URL?>/messages/getmsgs/topic_id/<?=$topic_id?>/page/<?=$nexnPage?>">..,</a>
+				<? foreach ($pages['pagesEnd'] as $page): ?>
+				<a href="<?=PRJ_URL?>/messages/getmsgs/topic_id/<?=$topic_id?>/page/<?=$page?>">
+					<?=$page?><?if($page != $pages['cntPages']):?><span>,</span> <?endif;?>
+				</a>
+		<? endforeach; ?>
+		<? endif; ?>
+		<? else: ?>
+		<div>В этой теме ещё нет сообщений</div> 
+<? endif; ?>

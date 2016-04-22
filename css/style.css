@@ -1,0 +1,127 @@
+* {
+	margin:0;
+	padding: 0;
+}
+table {
+	width: 100%;
+	border-spacing: 0px;
+	margin:0 auto;
+}
+
+table,
+th, 
+td, 
+.breadcrumbs,
+.msgstitle,
+.msgtext,
+.addmsg,
+.addmsg div,
+.addmsg .btn
+{
+	border: 1px solid #999999; 
+}
+th{
+	 text-align: left;
+	 height: 23px;
+	 background: #aaaaaa;
+	 padding: 5px;
+}
+.row td{
+	background: #cfcfcf;
+	padding: 7px;
+}
+.error {
+	color: red;
+}
+.sucsess {
+	color: green;
+}
+.sucsess,
+.error 
+{
+	font-weight: bold;
+	font-size: 16px;
+	text-align: center;
+}
+a {
+	text-decoration: none;
+	color: #818181;
+}
+a:hover {
+	color: #171717;
+	font-weight: bold;
+}
+a.topic {
+	color: #171717;
+	font-size: 16px;
+	font-weight: bold;
+}
+.container {
+	background-color: #cccccc;
+	padding: 20px;
+}
+.search {
+	text-align: right;
+	margin-bottom: 5px;
+}
+.breadcrumbs {
+	font-weight: bold;
+	background-color: #dddddd;
+	padding: 5px;
+	margin-bottom: 5px;
+}
+.title {
+	font-weight: bold;
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+.msg {
+	margin:10px 0px 30px 0px;
+}
+.msgtitle {
+	text-align: right;
+	padding:7px;
+	background-color: #dddddd;
+}
+.msgtext {
+	padding:15px;
+	background-color: #eeeeee;
+}
+.addmsg {
+	width: 70%;
+	margin: 10px auto;
+	background-color: #dddddd;
+}
+.addmsg div {
+	background-color: #aaaaaa;
+	padding:7px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+	margin-bottom: 30px; 
+}
+.addmsg .text {
+	background-color: #dddddd;
+	width: 95%;
+	margin: 0 auto;
+}
+.text textarea {
+	width: 100%;
+}
+.addmsg .btn {
+	background-color: #dddddd;
+	margin: 0;
+}
+.curent {
+	font-weight: bold;
+	color: #010101;
+}
+.statistic {
+	background-color: #cccccc;
+	text-align: center;
+	padding:20px;
+}
+.pagenav.topics {
+	text-align: center;
+	margin-bottom: 10px;
+}
