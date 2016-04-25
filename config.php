@@ -18,9 +18,9 @@ define('MSGS_ON_PAGE', 10);
 
 
 if(substr_count($_SERVER['REQUEST_URI'], PRJ_NAME)) {
-    define('PRJ_URL', '/'.PRJ_NAME);    
+    define('PRJ_URL', '/'.PRJ_NAME);
 } else {
-    define('PRJ_URL', '');    
+    define('PRJ_URL', '');
 }
 
 define('CSS_URL', PRJ_URL.'/css');

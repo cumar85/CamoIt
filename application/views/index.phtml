@@ -1,59 +1,58 @@
-<div class="pagenav topics">
-	<?
-		$href = PRJ_URL . "/index/index";
-		Page::getHtmlPages($topicPages, $href);
-	?>
-</div>
-	<table>
-		<tr>
-			<th>Название темы</th>
-			<th>Ответов(Просм.)</th>
-			<th>Последнее сообщение</th>
-		</tr>
-		<tr class= "row">
-			<td colspan ="3"></td>
-		</tr>
-	<?php foreach ($topics as $topic): ?>
-		<tr>
+    <div class="pagenav topics">
+        <?
+            $href = PRJ_URL . "/index/index";
+            Page::getHtmlPages($topicPages, $href);
+        ?>
+    </div>
 
-			<td>
-				<a class='topic' href="<?=PRJ_URL?>/messages/getmsgs/topicId/<?=$topic['id'] ?>/page/1" > 
-					<?=$topic['title'] ?> 
-				</a><br>
+    <table>
+        <tr>
+            <th>Название темы</th>
+            <th>Ответов(Просм.)</th>
+            <th>Последнее сообщение</th>
+        </tr>
+        <tr class= "row">
+            <td colspan ="3"></td>
+        </tr>
+    <?php foreach ($topics as $topic): ?>
+        <tr>
 
-				<div class="pagenav">
-					<?
-						if ($topic['pages']) {
-							$topic['pages']['curPage'] = 0;
-							$href = PRJ_URL . "/messages/getmsgs/topicId/{$topic['id']}";
-							Page::getHtmlPages($topic['pages'], $href);
-						} else {
-							echo "<span>В этой теме еще нет сообщений.<span>"; 
-						}
-						
-					?>
-				</div> 
-				
-			</td>
+            <td>
+                <a class='topic' href="<?=PRJ_URL?>/messages/getmsgs/topicId/<?=$topic['id'] ?>/page/1" >
+                    <?=$topic['title'] ?>
+                </a><br>
 
-			<td align="center">
-				<?= $topic['pages']['items'] ? $topic['pages']['items'] : 0 ?>
-				(<?=$topic['views'] ?>)
-			</td>
-			<td align="center">
-				<?=Date::getFormatedDateTime($topic['timestamp']) ?>
-			</td>
-		</tr>
-		
-	<?php endforeach ?>
-	</table>
-	<div>
-		<br>
-		<div class="pagenav topics">
-			<?
-				$href = PRJ_URL . "/index/index";
-				Page::getHtmlPages($topicPages, $href);
-			?>
-		</div>
-		
-	
+                <div class="pagenav">
+                    <?
+                        if ($topic['pages']) {
+                            $topic['pages']['curPage'] = 0;
+                            $href = PRJ_URL . "/messages/getmsgs/topicId/{$topic['id']}";
+                            Page::getHtmlPages($topic['pages'], $href);
+                        } else {
+                            echo "<span>В этой теме еще нет сообщений.<span>";
+                        }
+
+                    ?>
+                </div>
+
+            </td>
+
+            <td align="center">
+                <?= $topic['pages']['items'] ? $topic['pages']['items'] : 0 ?>
+                (<?=$topic['views'] ?>)
+            </td>
+            <td align="center">
+                <?=Date::getFormatedDateTime($topic['timestamp']) ?>
+            </td>
+        </tr>
+
+    <?php endforeach ?>
+    </table>
+
+    <br>
+    <div class="pagenav topics">
+        <?
+            $href = PRJ_URL . "/index/index";
+            Page::getHtmlPages($topicPages, $href);
+        ?>
+    </div>
